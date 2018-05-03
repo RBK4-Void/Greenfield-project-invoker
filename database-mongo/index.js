@@ -1,4 +1,3 @@
-
 //include mongoose in our project
 //open a connection to the patient database on our locally running instance of MongoDB.
 var mongoose = require('mongoose');
@@ -20,6 +19,7 @@ db.once('open', function() {
 
 //create our schema
 var patientSchema = mongoose.Schema({
+  number:{type:Number,unique:true},
   doctorName: String,
   firstName:String,
   lastName:String,
@@ -33,7 +33,7 @@ var patientSchema = mongoose.Schema({
   genetic_Diseases:String,
   allergies:String,
   description: String,
-  appointments: [{date:Date , from:String ,to:String , patient:String, doctor:String , description:String }]
+  appointments: [{date:String , from:String ,to:String , patient:String, doctor:String , description:String }]
 });
 
 //compiling our schema into a Model(class)
@@ -52,8 +52,14 @@ var selectAll = function(callback) {
 //functionality to our instances:
 var save=function(data){
 
-var user = new User(data)
-user.save()
+  var user = new User(data)
+  user.save()
+}
+
+var savePat=function(data){
+
+var pat = new Patient(data)
+pat.save()
 }
 
 //create our schema
@@ -63,7 +69,7 @@ var userSchema = mongoose.Schema({
   firstName:String,
   lastName:String,
   address:String,
-  phone:String,
+  contact:String,
   bday:String,
   gender:String,
   disability:String,
@@ -74,7 +80,7 @@ var userSchema = mongoose.Schema({
   speciality:String,
   userType: String,
 });
- 
+
 
 
 
@@ -85,3 +91,4 @@ module.exports=User;
 module.exports=Patient;
 module.exports.selectAll = selectAll;
 module.exports.save = save;
+module.exports.savePat = savePat;

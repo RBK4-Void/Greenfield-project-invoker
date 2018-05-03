@@ -102,6 +102,7 @@ class Record extends React.Component {
     this.state={
       loggedIn:true,
       patientNumber:3,
+      patientName : '',
       //the data get from retrieve
       data:{},
     };
@@ -111,6 +112,13 @@ class Record extends React.Component {
   onWrite1 (e) {
     this.setState({
       patientNumber: 1*e.target.value,
+    });
+  };
+
+
+  onWrite2 (e) {
+    this.setState({
+      patientName: e.target.value,
     });
   };
   //for logout button
@@ -166,6 +174,34 @@ class Record extends React.Component {
       },
     }); 
   };
+
+
+  //for retrieve one patient
+  retrieveName(){
+    console.log('you try to retrieve one patient', typeof this.state.patientName);
+    const that=this
+    //ajax request to logout
+    $.ajax({
+      type: 'GET',
+      url: '/patient',
+      data:{firstName:`${that.state.patientName}`},
+      //when success do this
+      success: function (res) {
+        console.log('Sucess retrieve patient have firstName: ',res[0].firstName);
+        alert('Sucess retrieve patient have firstName: '+res[0].firstName);
+        that.setState({data:res});
+        //console.log(that.state.data);
+        that.renderData()
+      },
+      //when error do this
+      error: function (){
+        alert('Try Again Baby');
+        console.log('Please try again');
+      },
+    }); 
+  };
+
+
   //to save data to can use and render
   renderData(){
     //console.log('HERE: ',this.state.data[0]);
@@ -177,7 +213,7 @@ class Record extends React.Component {
     $('.lastName').html(data.lastName);
     $('.gender').html(data.gender);
     $('.age').html(data.age);
-    $('.phone').html(data.phone);
+    $('.contact').html(data.contact);
     $('.conditions').html(data.conditions);
     $('.pastDiseases').html(data.past_Diseases);
     $('.currMedications').html(data.currentlly_Medications);
@@ -188,12 +224,21 @@ class Record extends React.Component {
   render () {
     return (
         <div1>
-          <h2 style={header1}>Retrieve data for patient  by his number</h2>
+          <h2 style={header1}>Retrieve data for patient</h2>
           <div2 className='row' style={{marginLeft:'auto',marginRight: 'auto'}}>
-            <h3 className='col-xs-4 col-xs-offset-1' style={header3}>Get all info for this patient:</h3>
+            <h3 className='col-xs-4 col-xs-offset-1' style={header3}>Retrieve data by record #</h3>
             <input className='col-xs-1 col-xs-offset-1' value={this.state.patientNumber} type='number' onChange={this.onWrite1.bind(this)} placeholder="Patient number" style={input3}></input>
-            <button className='col-xs-2 col-xs-offset-1' onClick={this.retrieveOne.bind(this)} style={button3}>Show the data now</button>
+            <button className='col-xs-2 col-xs-offset-1' onClick={this.retrieveOne.bind(this)} style={button3}>Show</button>
           </div2>
+
+
+<div2 className='row' style={{marginLeft:'auto',marginRight: 'auto'}}>
+            <h3 className='col-xs-4 col-xs-offset-1' style={header3}>Retrieve data by Name</h3>
+            <input className='col-xs-1 col-xs-offset-1' value={this.state.patientName} type='text' onChange={this.onWrite2.bind(this)} placeholder="Patient Name" style={input3}></input>
+            <button className='col-xs-2 col-xs-offset-1' onClick={this.retrieveName.bind(this)} style={button3}>Show</button>
+          </div2>
+
+
           <div3>
             <table style={{width:'80%',marginLeft:'auto',marginRight: 'auto',marginTop:'20px'}}>
               <tr>
@@ -243,6 +288,4 @@ class Record extends React.Component {
 }
 //export this component to can use
 export default Record;
-
-
 

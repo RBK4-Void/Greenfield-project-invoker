@@ -8,7 +8,7 @@ class Patient extends React.Component {
 	}
 
 	add (){
-		window.location.href= window.location.origin+'/'
+		window.location.href= window.location.origin+'/appointment'
 	}
 
 

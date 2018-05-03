@@ -1,3 +1,7 @@
+
+
+
+
 //helping functions to check if the user is logged in.
 var session=require('express-session');
 var path=require('path')
