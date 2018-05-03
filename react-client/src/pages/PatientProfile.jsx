@@ -140,6 +140,11 @@ changeDisability (e) {
     disability: e.target.value,
   });
 };
+changeDrugs (e) {
+  this.setState({
+    drugs: e.target.value,
+  });
+};
 
 changePregnant (e) {
   this.setState({
@@ -150,6 +155,12 @@ changePregnant (e) {
 changeMedications (e) {
   this.setState({
     medications: e.target.value,
+  });
+};
+
+changeGender (e) {
+  this.setState({
+    gender: e.target.value,
   });
 };
 
@@ -169,10 +180,10 @@ render () {
     <label for="address" value={this.state.address} onChange={this.changeAddress.bind(this)}>Address</label>
     <input style = {input} type="text" id="address"></input> 
     <br></br> 
-    <label for="male">Male</label>&nbsp; &nbsp;
-    <input type="radio" name="gender" id="male" value="male"></input>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-    <label for="female">Female</label>&nbsp; &nbsp;
-    <input type="radio" name="gender" id="female" value="female"></input><br></br> 
+    <select name="gender" style={button} onChange={this.changeGender.bind(this)} value={this.state.gender}>
+        <option value="male">male</option>
+        <option value="female">female</option>
+        </select><br></br> 
     <br></br> 
 
     <label for="bday">Date Of Birth</label>
@@ -180,33 +191,32 @@ render () {
     <br></br> 
 
     <p style={label} value={this.state.disability} onChange={this.changeDisability.bind(this)}> Do you suffer from any disability? </p>
-    <label for="Yes">Yes</label>&nbsp; &nbsp;
-    <input type="radio" name="disChoice" id="yes" value="yes"></input>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-    <label for="no">No</label>&nbsp; &nbsp;
-    <input type="radio" name="disChoice" id="no" value="no"></input><br></br> 
-    <br></br> 
-
+    <select name="disable" style={button} onChange={this.changeDisability.bind(this)} value={this.state.disability}>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+        </select>
+<br></br>
     <p style={label}> Have you ever, or do you now take illegal drugs? </p>
-    <label for="Yes">Yes</label>&nbsp; &nbsp;
-    <input type="radio" name="drugChoice" id="yes" value="yes"></input>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-    <label for="no">No</label>&nbsp; &nbsp;
-    <input type="radio" name="drugChoice" id="no" value="no"></input><br></br> 
+    <select name="drugs" style={button} onChange={this.changeDrugs.bind(this)} value={this.state.drugs}>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+        </select>
     <br></br> 
 
 
     <p style={label} value={this.state.medications} onChange={this.changeMedications.bind(this)}> Have you ever had an allergic reaction to medication? </p>
-    <label for="Yes">Yes</label>&nbsp; &nbsp;
-    <input type="radio" name="mediChoice" id="yes" value="yes"></input>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-    <label for="no">No</label>&nbsp; &nbsp;
-    <input type="radio" name="mediChoice" id="no" value="no"></input><br></br> 
+    <select name="medications" style={button} onChange={this.changeMedications.bind(this)} value={this.state.medications}>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+        </select>
     <br></br> 
 
 
     <p style={label} value={this.state.pregnant} onChange={this.changePregnant.bind(this)}> For females: Are you pregnant? </p>
-    <label for="Yes">Yes</label>&nbsp; &nbsp;
-    <input type="radio" name="preChoice" id="yes" value="yes"></input>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-    <label for="no">No</label>&nbsp; &nbsp;
-    <input type="radio" name="preChoice" id="no" value="no"></input><br></br> 
+     <select name="pregnant" style={button} onChange={this.changePregnant.bind(this)} value={this.state.pregnant}>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+        </select>
     <br></br> 
 
     

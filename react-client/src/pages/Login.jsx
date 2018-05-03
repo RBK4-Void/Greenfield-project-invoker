@@ -106,7 +106,7 @@ class Login extends React.Component {
   };
   //for sign in button
   login() {
-    console.log(`you try to login: DR.${this.state.userName}`);
+    console.log(`you try to login: ${this.state.userName}`);
     //to can use this inside other function
     const that=this;
     //ajax request to sent the data to server then data base
@@ -161,8 +161,8 @@ class Login extends React.Component {
       },
       //when error do this
       error: function (){
-        alert(`Failed login please try again DR.${that.state.userName}`);
-        console.log(`Failed login please try again DR.${that.state.userName}`);
+        alert(`Failed login please try again ${that.state.userName}`);
+        console.log(`Failed login please try again ${that.state.userName}`);
       },
     }); 
   };

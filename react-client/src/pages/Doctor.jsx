@@ -11,7 +11,7 @@ const body={
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-	height: '100vh',
+	height: '91vh',
 	width: '100vw',
 }
 
@@ -23,12 +23,18 @@ const button={
 	border: 'none',
 	color: '#FFFFFF',
 	textAlign: 'center',
-	fontSize: '28px',
-	padding: '20px',
+	fontSize: '15px',
+	padding: '15px',
 	width: '200px',
 	transition: 'a1ll 0.5s',
 	cursor: 'pointer',
-	margin: '5px',
+	margin: '15px',
+	display:'block',
+
+}
+
+const newStyle = {
+	display:'block',
 }
 
 
@@ -41,16 +47,16 @@ class Doctor extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log('hi',this.state.info);
-		const that=this
-		$.ajax({
-			type: 'GET',
-			url: '/getInfo',
-			success: function (res) {
-      	//console.log('hh',res)
+
+    console.log('hi',this.state.info);
+    const that=this
+    $.ajax({
+      type: 'GET',
+      url: '/getInfo',
+      success: function (res) {
+      	console.log('hh',res)
       	that.setState({info:res })
-      	//console.log(that.state.info)
-      	
+   	
       }
   })
 	}
@@ -68,10 +74,6 @@ class Doctor extends React.Component {
 		window.location.href= window.location.origin+'/doctorProfile'
 	}
 
-	show (){
-		// window.location.href= window.location.origin+'/doctorApp'
-	}
-
 	logout(){
 		console.log('you try to logoutDR');
 		const that=this
@@ -87,14 +89,14 @@ class Doctor extends React.Component {
       },
       //when error do this
       error: function (){
-      	alert('Failed logout please try again DR');
-      	console.log('Failed logout please try again DR');
-      },
 
-  }) 
-}
+        alert('Failed logout please try again ');
+        console.log('Failed logout please try again ');
+      }
+    }) 
+  }
 
-render() {
+	render() {
 		return (
 			<div>
 			<button onClick={this.add.bind(this)}>Add Record</button>
