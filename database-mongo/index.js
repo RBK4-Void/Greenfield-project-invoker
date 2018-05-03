@@ -69,7 +69,7 @@ var userSchema = mongoose.Schema({
   firstName:String,
   lastName:String,
   address:String,
-  phone:String,
+  contact:String,
   bday:String,
   gender:String,
   disability:String,

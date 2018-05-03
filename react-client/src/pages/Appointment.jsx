@@ -164,5 +164,3 @@ render () {
 
 
 export default Appointment;
-
-

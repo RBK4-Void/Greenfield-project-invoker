@@ -215,7 +215,7 @@ class Record extends React.Component {
     $('.lastName').html(data.lastName);
     $('.gender').html(data.gender);
     $('.age').html(data.age);
-    $('.phone').html(data.phone);
+    $('.contact').html(data.contact);
     $('.conditions').html(data.conditions);
     $('.pastDiseases').html(data.past_Diseases);
     $('.currMedications').html(data.currentlly_Medications);

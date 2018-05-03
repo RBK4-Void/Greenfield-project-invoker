@@ -74,7 +74,7 @@ class NewPatient extends React.Component {
       lastName: '',
       gender: '',
       age: '',
-      phone: '07',
+      contact: '',
       conditions: '',
       past_Diseases: '',
       currentlly_Medications: '',
@@ -120,10 +120,10 @@ class NewPatient extends React.Component {
       age: e.target.value,
     });
   };
-  //phone
+  //Contact
   onWrite6 (e) {
     this.setState({
-      phone: e.target.value,
+      contact: e.target.value,
     });
   };
   //conditions
@@ -181,7 +181,7 @@ class NewPatient extends React.Component {
         lastName: `${this.state.lastName}`,
         gender: `${this.state.gender}`,
         age: `${this.state.age}`,
-        phone: `${this.state.phone}`,
+        contact: `${this.state.contact}`,
         conditions: `${this.state.conditions}`,
         past_Diseases: `${this.state.past_Diseases}`,
         currentlly_Medications: `${this.state.currentlly_Medications}`,
@@ -237,7 +237,7 @@ class NewPatient extends React.Component {
           </h3>
           <h3 style={number}>
           Phone:
-            <input type="number" value={this.state.phone} onChange={this.onWrite6.bind(this)} placeholder="Phone" style={input}>
+            <input type="number" value={this.state.contact} onChange={this.onWrite6.bind(this)} placeholder="Phone" style={input}>
             </input>
           </h3>
           <h3 style={number}>

@@ -16,9 +16,8 @@ class Search extends React.Component {
       value: '',
       val: ''
     };
-
+    
     this.inputChange  = this.inputChange.bind(this);
-
   }
 
   handleInputChange(e) {

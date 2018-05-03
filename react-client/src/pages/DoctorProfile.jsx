@@ -45,6 +45,7 @@ const label={
 }
 
 const body={
+
   backgroundColor: '#5290BE',
   fontFamily: 'sans-serif',
   fontSize: '0.85em',
