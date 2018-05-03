@@ -150,10 +150,8 @@ router.route('/patientApp')
     res.status(404).send('it is reserved')
   } 
   })
-  
-
-
-  
+})
+    
 
 
 router.route('/doctorApp')
@@ -221,16 +219,38 @@ router.route('/getInfo')
   // res.sendFile(path.join(__dirname, '../react-client/dist/index.html'));
 })
 })
+
+router.route('/info')
+.get(function(req,res){
+  console.log('hi')
+ Patient.find({},function(err,users){
+  console.log('here',users)
+  var userArr=[]
+  for(var i=0;i<users.length;i++){
+    if(users[i].firstName===req.session.user){
+      
+
+      userArr.push({description:users[i].description, medications: users[i].currentlly_Medications, history:users[i].past_Diseases})
+    }
+  } 
+
+  console.log('arr',userArr)
+  res.send(userArr)
+  // res.sendFile(path.join(__dirname, '../react-client/dist/index.html'));
+})
+})
+
+
 //must change here somthing by the id for this patient..26/4 12:30 PM
-router.route('/patient')
-//retrieve a pateint.
+ router.route('/patient')
+// //retrieve a pateint.
 .get(utils.checkUser, controller.retrieveOne)
-//create a patient.
-.post(utils.checkUser,controller.createOne)
-//update patient information.
-.put(utils.checkUser,controller.updateOne)
-//delete a patient.
-.delete(utils.checkUser,controller.delete)
+// //create a patient.
+ .post(utils.checkUser,controller.createOne)
+// //update patient information.
+ .put(utils.checkUser,controller.updateOne)
+// //delete a patient.
+ .delete(utils.checkUser,controller.delete)
 
 // router.route('/patients')
 // //get all patients
