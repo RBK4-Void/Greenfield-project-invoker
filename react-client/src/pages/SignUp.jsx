@@ -182,8 +182,8 @@ class SignUp extends React.Component {
       },
       //when error do this
       error: function (res){
-        alert(`Failed sigup please try again DR.${that.state.userName}`);
-        console.log(`Failed sigup please try again DR.${that.state.userName}`);
+        alert(`Failed sigup please try again ${that.state.userName}`);
+        console.log(`Failed sigup please try again ${that.state.userName}`);
       },
     }); 
 } else {

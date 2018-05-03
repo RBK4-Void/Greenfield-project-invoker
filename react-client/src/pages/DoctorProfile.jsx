@@ -139,6 +139,12 @@ changeSpeciality (e) {
 //     window.location.href= window.location.origin+'/'
 //   }
 
+onSelect (e) {
+    this.setState({
+      gender: e.target.value
+    })
+    console.log(e.target.value)
+  }
 
 
 render () {
@@ -168,10 +174,12 @@ render () {
     </select>
     <br></br> 
     <br></br> 
-    <label style={label} for="male">Male</label>&nbsp; &nbsp;
-    <input type="radio" name="gender" id="male" value="male"></input>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-    <label style={label} for="female">Female</label>&nbsp; &nbsp;
-    <input type="radio" name="gender" id="female" value="female"></input><br></br> &nbsp; &nbsp;
+    <select name="gender" style={button} onChange={this.onSelect.bind(this)} value={this.state.gender}>
+        <option value="male">male</option>
+        <option value="female">female</option>
+    </select>
+
+    
     <br></br> 
     <br></br> 
 
@@ -183,6 +191,12 @@ render () {
     )
 }
 }
+// <label style={label} for="male">Male</label>&nbsp; &nbsp;
+    // <input type="radio" name="gender" id="male" value="male"></input>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    // <label style={label} for="female">Female</label>&nbsp; &nbsp;
+    // <input type="radio" name="gender" id="female" value="female"></input><br></br> &nbsp; &nbsp;
+
+
 
 
 export default DoctorProfile;

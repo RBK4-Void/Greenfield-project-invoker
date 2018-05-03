@@ -47,16 +47,16 @@ class Doctor extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log('hi',this.state.info);
-		const that=this
-		$.ajax({
-			type: 'GET',
-			url: '/getInfo',
-			success: function (res) {
-      	//console.log('hh',res)
+
+    console.log('hi',this.state.info);
+    const that=this
+    $.ajax({
+      type: 'GET',
+      url: '/getInfo',
+      success: function (res) {
+      	console.log('hh',res)
       	that.setState({info:res })
-      	//console.log(that.state.info)
-      	
+   	
       }
   })
 	}
@@ -65,7 +65,7 @@ class Doctor extends React.Component {
 	add (){
 		window.location.href= window.location.origin+'/newpatient'
 	}
-	
+
 	search (){
 		window.location.href= window.location.origin+'/record'
 	}
@@ -89,38 +89,32 @@ class Doctor extends React.Component {
       },
       //when error do this
       error: function (){
-      	alert('Failed logout please try again DR');
-      	console.log('Failed logout please try again DR');
-      },
-  }) 
+
+        alert('Failed logout please try again ');
+        console.log('Failed logout please try again ');
+      }
+    }) 
+  }
+
+	render() {
+		return (
+			<div>
+			<button onClick={this.add.bind(this)}>Add Record</button>
+			<button onClick={this.search.bind(this)}>Search</button>
+			<button onClick={this.logout.bind(this)}>Log Out</button>
+			<button onClick={this.update.bind(this)}>Update your Profile</button>
+			<div style={{textAlign: 'center'}} >
+			Appointments:
+				{this.state.info.map((obj)=>
+					
+					<div style={{borderStyle: 'solid'}}> <h3> name:{obj.name} </h3> <h3> date: {obj.date }, from: {obj.from} ,to: {obj.to } </h3> </div>)
+				}
+
+			</div>
+
+			</div>
+			)}
 }
 
-render() {
-	return (
-		<div style={body}>
-		<div style={newStyle}>
-		<button style={button} onClick={this.add.bind(this)}><span>Add Record </span></button>
-		<br></br>
-		<br></br>
-		<button style={button} onClick={this.search.bind(this)}>Search</button>
-		<br></br>
-		<br></br>
-		<button style={button} onClick={this.logout.bind(this)}>Log Out</button>
-		<br></br>
-		<br></br>
-		<button style={button} onClick={this.update.bind(this)}>Update your Profile</button>
-		<div>
-		{this.state.info.map((obj)=>
-			<h3> name:{obj.firstName + " " +obj.lastName } , age:{obj.age } </h3>)
-	}
-
-	</div>
-
-	</div>
-	</div>
-	)
-}
-
-}
-
+      	
 export default Doctor

@@ -27,7 +27,7 @@ router.route('/login')
   User.findOne({userName:userName, userType:userType},function(err,user){
     if(!user){
       console.log('This username does not exist in database ..!');
-      res.send(`Sorry DR. this username does not exist in database please create new user now // if you have account but insert wrong username please go to login page again and insert your correct username`)
+      res.send(`Sorry this username does not exist in database please create new user now // if you have account but insert wrong username please go to login page again and insert your correct username`)
     }else{
       bcrypt.compare(password,user.password,function(err,match){
         if(match){
@@ -35,7 +35,7 @@ router.route('/login')
           utils.createSession(req,res,user,userName);
         }else{
           console.log('Wrong password ..!');
-          res.send(`Sorry DR.${userName} this password is wrong please insert the username again and your correct password`);
+          res.send(`Sorry ${userName} this password is wrong please insert the username again and your correct password`);
         }
       })}
     })
@@ -72,7 +72,7 @@ router.route('/signup')
     }
     else{
       console.log('This username already exists in database ..!');
-      res.send(`Sorry DR.${userName} you signup before please insert the username again and your password to log in // if you are not DR.${userName} please go to sign up page again and insert another username`)
+      res.send(`Sorry ${userName} you signup before please insert the username again and your password to log in // if you are not ${userName} please go to sign up page again and insert another username`)
     }
   })
 });
@@ -81,11 +81,16 @@ router.route('/logout')
 .get(function(req,res){
   req.session.destroy()
   console.log('Successful logout');
-  res.send(`Goodbye DR you logout now .. see you later`);
+  res.send(`Goodbye  you logout now .. see you later`);
 })
 
 //homepage route with checkUser middleware to check for a user key in the session object.
 router.route('/')
+.get(utils.checkUser,function(req,res){
+  res.sendFile(path.join(__dirname, '../react-client/dist/index.html'));
+})
+
+router.route('/patientApp')
 .get(utils.checkUser,function(req,res){
   res.sendFile(path.join(__dirname, '../react-client/dist/index.html'));
 })
@@ -147,8 +152,8 @@ router.route('/patientApp')
   })
   
 
+
   
-})
 
 
 router.route('/doctorApp')
@@ -183,7 +188,6 @@ router.route('/patientprofile')
 
 
 
-
 router.route('/doctor')
 .get(function(req,res){
   res.sendFile(path.join(__dirname, '../react-client/dist/index.html'));
@@ -205,9 +209,11 @@ router.route('/getInfo')
   console.log('here',users)
   var userArr=[]
   for(var i=0;i<users.length;i++){
-    if(users[i].doctorName===req.session.user){
-      userArr.push(users[i])
-    }
+    if(users[i].doctorName===req.session.user && users[i].appointments.length !==0){
+      for(var j=0; j<users[i].appointments.length; j++){
+
+      userArr.push({name: users[i].firstName , date: users[i].appointments[j].date , from:users[i].appointments[j].from, to:users[i].appointments[j].to})
+    }}
   } 
 
   console.log('arr',userArr)

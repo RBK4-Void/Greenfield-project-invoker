@@ -21,7 +21,7 @@ exports.isLoggedIn=function(req,res){
 exports.checkUser=function(req,res,next){
   if(!exports.isLoggedIn(req)){
     console.log('You Are not logged in');
-    res.send('<script>alert("Sorry DR you are not logged in please login first to can access this page")</script>'+'<script>window.location.href= window.location.origin+"/login" </script>')
+    res.send('<script>alert("Sorry you are not logged in please login first to can access this page")</script>'+'<script>window.location.href= window.location.origin+"/login" </script>')
   }else{
     console.log('next');
     next()
@@ -34,9 +34,9 @@ exports.createSession=function(req,res,aUser,username,b){
   req.session.regenerate(function(){
     req.session.user=username;
     if (b) {
-      res.send(`Welcome DR.${username} you created new user and you are logged in now`)
+      res.send(`Welcome ${username} you created new user and you are logged in now`)
     }else{
-      res.send(`Welcome DR.${username} you are logged in now`)
+      res.send(`Welcome ${username} you are logged in now`)
     }
 
   })

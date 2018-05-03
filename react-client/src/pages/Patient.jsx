@@ -17,7 +17,7 @@ class Patient extends React.Component {
 	}
 
 	logout(){
-    console.log('you try to logoutDR');
+    console.log('you try to logout');
     const that=this
     //ajax request to logout
     $.ajax({
@@ -31,8 +31,8 @@ class Patient extends React.Component {
       },
       //when error do this
       error: function (){
-        alert('Failed logout please try again DR');
-        console.log('Failed logout please try again DR');
+        alert('Failed logout please try again ');
+        console.log('Failed logout please try again ');
       },
     }) 
    }
