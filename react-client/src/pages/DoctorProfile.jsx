@@ -45,12 +45,10 @@ const label={
 }
 
 const body={
-  backgroundColor: '#BDF1F6',
+  backgroundColor: '#5290BE',
   fontFamily: 'sans-serif',
   fontSize: '0.85em',
   color: 'rgba(66,66,66 ,1)',
-  height: '100vh',
-  width: '100vw',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
