@@ -85,6 +85,31 @@ exports.delete=function(req,res){
 exports.retrieveOne=function(req,res){
   //try to solve problem cant go to correct number jozaa
   //take the number sent in the GET request
+  //console.log(req)
+  console.log('HEREEEEEEEEEEEE:',req);
+  var firstName=req._parsedOriginalUrl.path.split('=')[1]
+  console.log('HEREEEEEEEEEEEE:',firstName);
+  
+  //req.body.number=JSON.parse(req.body.number);
+  //console.log('HERE',req.body);
+  //console.log(req)
+  Patient.find({firstName:firstName},function(err,patient){
+    if(err){
+      console.log(err)
+      res.send(500)
+    }
+    else{
+      console.log(patient)
+      res.send(patient)
+    }
+  })
+};
+
+/*
+//4.return all info for one patient
+exports.retrieveOne=function(req,res){
+  //try to solve problem cant go to correct number jozaa
+  //take the number sent in the GET request
   console.log(req)
   console.log('HEREEEEEEEEEEEE:',req._parsedOriginalUrl.path.split('=')[1]);
   var number=req._parsedOriginalUrl.path.split('=')[1]
@@ -103,6 +128,7 @@ exports.retrieveOne=function(req,res){
   })
 };
 
+*/
 //5.return all info for all patients
 exports.retrieveAll=function(req,res){
   Patient.find(function(err,allpatient){

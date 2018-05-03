@@ -169,7 +169,6 @@ render () {
     <div style={formCen}>
     <div style={body}>
     <form >
-    <h1 style={pageName}> Patient</h1>
 
     <label for="fullName">Full Name</label>
     <input style = {input} type="text" id="fullName" value={this.state.fullName} onChange={this.changeName.bind(this)}></input> 

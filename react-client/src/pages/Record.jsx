@@ -43,27 +43,27 @@ const button3={
 };
 //style for th / the const thing
 const table={
-    border: '3px solid black',
-    borderCollapse: 'collapse',
-    padding: '3px',
-    textAlign : 'center',
-    fontSize:'25px',
-    fontWeight:'bold',
-    color:'black',
-    backgroundColor: 'white',
+  border: '3px solid black',
+  borderCollapse: 'collapse',
+  padding: '3px',
+  textAlign : 'center',
+  fontSize:'25px',
+  fontWeight:'bold',
+  color:'black',
+  backgroundColor: 'white',
 }
 //style for td / the changed thing
 const table2={
-    border: '3px solid black',
-    borderCollapse: 'collapse',
-    padding: '3px',
-    textAlign : 'center',
-    fontSize:'25px',
+  border: '3px solid black',
+  borderCollapse: 'collapse',
+  padding: '3px',
+  textAlign : 'center',
+  fontSize:'25px',
     //fontWeight:'bold',
     color:'white',
     backgroundColor: 'gray',
 
-}
+  }
 //the style for the button logout
 const button1={
   padding:'5px',
@@ -178,7 +178,7 @@ class Record extends React.Component {
 
   //for retrieve one patient
   retrieveName(){
-    console.log('you try to retrieve one patient', typeof this.state.patientName);
+    console.log('you try to retrieve one patient',  this.state.patientName);
     const that=this
     //ajax request to logout
     $.ajax({
@@ -206,8 +206,10 @@ class Record extends React.Component {
   renderData(){
     //console.log('HERE: ',this.state.data[0]);
     //i get the data now i neeed to render it
-    var data=this.state.data[0]
-    console.log('HERE: ',this.state.data[0]);
+    var data=this.state.data[0];
+    console.log('HERE: ',data);
+
+    //Sconsole.log('HERE: ',this.state.data[0]);
     $('.number').html(data.number);
     $('.firstName').html(data.firstName);
     $('.lastName').html(data.lastName);
@@ -223,67 +225,62 @@ class Record extends React.Component {
   };
   render () {
     return (
-        <div1>
-          <h2 style={header1}>Retrieve data for patient</h2>
-          <div2 className='row' style={{marginLeft:'auto',marginRight: 'auto'}}>
-            <h3 className='col-xs-4 col-xs-offset-1' style={header3}>Retrieve data by record #</h3>
-            <input className='col-xs-1 col-xs-offset-1' value={this.state.patientNumber} type='number' onChange={this.onWrite1.bind(this)} placeholder="Patient number" style={input3}></input>
-            <button className='col-xs-2 col-xs-offset-1' onClick={this.retrieveOne.bind(this)} style={button3}>Show</button>
-          </div2>
+      <div1>
+      <h2 style={header1}>Retrieve data for patient</h2>
+      
+
+      <div2 className='row' style={{marginLeft:'auto',marginRight: 'auto'}}>
+      <h3 className='col-xs-4 col-xs-offset-1' style={header3}>Retrieve data by Name</h3>
+      <input className='col-xs-1 col-xs-offset-1' value={this.state.patientName} type='text' onChange={this.onWrite2.bind(this)} placeholder="Patient Name" style={input3}></input>
+      <button className='col-xs-2 col-xs-offset-1' onClick={this.retrieveName.bind(this)} style={button3}>Show</button>
+      </div2>
 
 
-<div2 className='row' style={{marginLeft:'auto',marginRight: 'auto'}}>
-            <h3 className='col-xs-4 col-xs-offset-1' style={header3}>Retrieve data by Name</h3>
-            <input className='col-xs-1 col-xs-offset-1' value={this.state.patientName} type='text' onChange={this.onWrite2.bind(this)} placeholder="Patient Name" style={input3}></input>
-            <button className='col-xs-2 col-xs-offset-1' onClick={this.retrieveName.bind(this)} style={button3}>Show</button>
-          </div2>
-
-
-          <div3>
-            <table style={{width:'80%',marginLeft:'auto',marginRight: 'auto',marginTop:'20px'}}>
-              <tr>
-                <th style={table}>Number</th>
-                <th style={table}>First name</th> 
-                <th style={table}>Last name</th>
-                <th style={table}>Gender</th>
-              </tr>
-              <tr>
-                <td className='number' value='tttttt' style={table2}></td>
-                <td className='firstName' style={table2}></td>
-                <td className='lastName' style={table2}></td>
-                <td className='gender' style={table2}></td>
-              </tr>
-              <tr>
-                <th style={table}>Age</th>
-                <th style={table}>Phone</th> 
-                <th style={table}>Conditions</th>
-                <th style={table}>Past Diseases</th>
-              </tr>
-              <tr>
-                <td className='age' style={table2}></td>
-                <td className='phone' style={table2}></td>
-                <td className='conditions' style={table2}></td>
-                <td className='pastDiseases' style={table2}></td>
-              </tr>
-              <tr>
-                <th style={table}>Curr. Medications</th>
-                <th style={table}>Genetic Diseases</th>
-                <th style={table}>Allergies</th> 
-                <th style={table}>Description</th>
-              </tr>
-              <tr>
-                <td className='currMedications' style={table2}></td>
-                <td className='geneticDisease' style={table2}></td>
-                <td className='allergies' style={table2}></td>
-                <td className='description' style={table2}></td>
-              </tr> 
-            </table>
-          </div3>
-          <div4 className='row'> 
-            <button onClick={this.home.bind(this)} style={button1}>back</button>
-          </div4>
-        </div1>
-    )
+      <div3>
+      <table style={{width:'80%',marginLeft:'auto',marginRight: 'auto',marginTop:'20px'}}>
+      <tr>
+      <th style={table}>Number</th>
+      <th style={table}>First name</th> 
+      <th style={table}>Last name</th>
+      <th style={table}>Gender</th>
+      </tr>
+      <tr>
+      <td className='number' value='tttttt' style={table2}></td>
+      <td className='firstName' style={table2}></td>
+      <td className='lastName' style={table2}></td>
+      <td className='gender' style={table2}></td>
+      </tr>
+      <tr>
+      <th style={table}>Age</th>
+      <th style={table}>Phone</th> 
+      <th style={table}>Conditions</th>
+      <th style={table}>Past Diseases</th>
+      </tr>
+      <tr>
+      <td className='age' style={table2}></td>
+      <td className='phone' style={table2}></td>
+      <td className='conditions' style={table2}></td>
+      <td className='pastDiseases' style={table2}></td>
+      </tr>
+      <tr>
+      <th style={table}>Curr. Medications</th>
+      <th style={table}>Genetic Diseases</th>
+      <th style={table}>Allergies</th> 
+      <th style={table}>Description</th>
+      </tr>
+      <tr>
+      <td className='currMedications' style={table2}></td>
+      <td className='geneticDisease' style={table2}></td>
+      <td className='allergies' style={table2}></td>
+      <td className='description' style={table2}></td>
+      </tr> 
+      </table>
+      </div3>
+      <div4 className='row'> 
+      <button onClick={this.home.bind(this)} style={button1}>back</button>
+      </div4>
+      </div1>
+      )
   }
 }
 //export this component to can use
